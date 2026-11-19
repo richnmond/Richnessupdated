@@ -163,6 +163,7 @@ const projects = [
     tone: "lime",
     image: superMImage,
     imageAlt: "SuperM supermarket management dashboard displayed on a desktop computer",
+    liveUrl: "https://super-m-ub42.vercel.app/",
   },
   {
     number: "02",
@@ -175,6 +176,7 @@ const projects = [
     tone: "violet",
     image: "",
     imageAlt: "",
+    liveUrl: null,
   },
   {
     number: "03",
@@ -187,6 +189,7 @@ const projects = [
     tone: "orange",
     image: examPrepImage,
     imageAlt: "ExamPrep NG student dashboard displayed across laptop and mobile devices",
+    liveUrl: "https://examprepp-tau.vercel.app/",
   },
 ];
 
@@ -233,7 +236,7 @@ function Header({ dark, setDark }: { dark: boolean; setDark: (value: boolean) =>
   return (
     <header className="site-header">
       <a className="brand" href="#home" aria-label="Richness Olarinoye, home">
-        <span>RO</span>
+        <img className="brand-mark" src="/brand-mark.svg" alt="" />
         <b>Richness Olarinoye</b>
       </a>
       <nav className={open ? "nav open" : "nav"} aria-label="Primary navigation">
@@ -612,8 +615,14 @@ export default function App() {
                     ))}
                   </div>
                   <div className="project-link-state">
-                    <span>Live demo & repository</span>
-                    <b>Not publicly linked</b>
+                    <span>Live demo</span>
+                    {project.liveUrl ? (
+                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                        View live site <Icon name="arrow" size={14} />
+                      </a>
+                    ) : (
+                      <b>Not publicly linked</b>
+                    )}
                   </div>
                 </div>
               </article>
@@ -760,7 +769,7 @@ export default function App() {
       </main>
       <footer>
         <a className="brand" href="#home">
-          <span>RO</span>
+          <img className="brand-mark" src="/brand-mark.svg" alt="" />
           <b>Richness Olarinoye</b>
         </a>
         <p>Software engineer. Product builder. Turning real problems into useful technology.</p>

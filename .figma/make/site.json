@@ -1,5 +1,8 @@
 {
   "description": "Explore Richness Olarinoye’s portfolio to discover featured projects, skills, experience, services, and connect through a contact form.",
+  "icons": {
+    "icon": "/brand-mark.svg"
+  },
   "robots": {
     "index": false
   },

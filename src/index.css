@@ -101,15 +101,10 @@ html {
   gap: 0.75rem;
   font-size: 0.83rem;
 }
-.brand > span {
-  width: 34px;
-  height: 34px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--ink);
-  color: var(--bg);
-  font: 500 0.72rem "DM Mono";
+.brand-mark {
+  width: 36px;
+  height: 36px;
+  flex: none;
 }
 .brand b {
   font-weight: 700;
@@ -730,6 +725,17 @@ html {
 .project-link-state b {
   color: var(--muted);
   font-weight: 400;
+}
+.project-link-state a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--ink);
+  font-weight: 500;
+  text-decoration: none;
+}
+.project-link-state a:hover {
+  color: var(--accent);
 }
 .project-disclaimer {
   max-width: 650px;
