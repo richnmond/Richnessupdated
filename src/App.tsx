@@ -369,9 +369,17 @@ function ContactForm() {
     event.preventDefault();
     const form = event.currentTarget;
     if (!form.checkValidity()) return form.reportValidity();
-    setStatus(
-      "Thanks — your message is ready. Add a contact email to connect this form for delivery.",
-    );
+    const fields = new FormData(form);
+    const subject = `Project enquiry: ${fields.get("project")}`;
+    const body = [
+      `Name: ${fields.get("name")}`,
+      `Email: ${fields.get("email")}`,
+      `Project type: ${fields.get("project")}`,
+      "",
+      String(fields.get("message")),
+    ].join("\n");
+    window.location.href = `mailto:devrichy01@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setStatus("Your email app is opening with the enquiry addressed to devrichy01@gmail.com.");
     form.reset();
   }
   return (
@@ -387,7 +395,7 @@ function ContactForm() {
             name="email"
             type="email"
             autoComplete="email"
-            placeholder="devrichy01.com"
+            placeholder="you@example.com"
             required
           />
         </label>
@@ -629,8 +637,7 @@ export default function App() {
             ))}
           </div>
           <p className="project-disclaimer">
-            SuperM and ExamPrep NG use supplied product imagery. Estate Flow uses a custom interface
-            preview. Working links can be added when supplied.
+            
           </p>
         </section>
 
