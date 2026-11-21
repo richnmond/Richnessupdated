@@ -126,6 +126,12 @@ function Icon({ name, size = 20 }: { name: IconName; size?: number }) {
 
 const navItems = ["Home", "About", "Skills", "Projects", "Experience", "Services", "Contact"];
 
+const whatsappNumber =
+  import.meta.env.VITE_WHATSAPP_NUMBER?.replace(/\D/g, "") || "2347059831230";
+const whatsappMessage =
+  import.meta.env.VITE_WHATSAPP_MESSAGE ||
+  "Hello Richness, I found your portfolio and would like to discuss a project.";
+
 const skills = [
   {
     label: "Frontend development",
@@ -436,6 +442,39 @@ function ContactForm() {
   );
 }
 
+function WhatsAppButton() {
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+  return (
+    <a
+      className="whatsapp-float"
+      href={whatsappUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Chat with Richness Olarinoye on WhatsApp"
+    >
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M20.5 11.5a8.5 8.5 0 0 1-12.6 7.42L3.2 20.1l1.17-4.55A8.5 8.5 0 1 1 20.5 11.5Z"
+          fill="currentColor"
+        />
+        <path
+          d="M8.25 7.5c.25-.55.5-.56.75-.57h.55c.18 0 .43-.02.65.5.23.55.78 1.9.85 2.04.07.14.12.31.02.5-.1.18-.15.29-.3.45-.15.15-.31.34-.44.46-.15.13-.3.27-.13.54.17.27.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.35 1.46.29.15.46.13.63-.08.17-.21.73-.85.92-1.14.19-.29.38-.24.64-.15.25.1 1.61.76 1.89.9.28.14.46.21.53.33.07.12.07.69-.16 1.36-.23.67-1.34 1.28-1.85 1.36-.48.08-1.1.11-1.78-.11-.41-.13-.94-.31-1.61-.61-2.83-1.22-4.68-4.07-4.82-4.26-.14-.19-1.15-1.53-1.15-2.92 0-1.39.73-2.07.99-2.35.26-.28.57-.31.76-.31Z"
+          fill="#25D366"
+        />
+      </svg>
+      <span className="whatsapp-tooltip" role="tooltip">
+        Chat with me
+      </span>
+    </a>
+  );
+}
+
 export default function App() {
   const [dark, setDark] = useState(() => localStorage.getItem("theme") !== "light");
   useEffect(() => {
@@ -454,6 +493,7 @@ export default function App() {
 
   return (
     <div className="app">
+      <WhatsAppButton />
       <a className="skip-link" href="#main">
         Skip to content
       </a>
